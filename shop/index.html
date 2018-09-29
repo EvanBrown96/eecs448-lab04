@@ -68,62 +68,94 @@
 
           for(let i = 0; i < items.length; i++){
 
+            // create container for this entire item
             let item_container = document.createElement('div');
             item_container.setAttribute("class", "container item");
 
-              let item_title = document.createElement('div');
-              item_title.setAttribute("class", "item-div title");
+            // create title div for the item
+            let item_title = document.createElement('div');
+            item_title.setAttribute("class", "item-div title");
 
-                let title_header = document.createElement("h3");
-                title_header.appendChild(document.createTextNode(items[i].name));
-                item_title.appendChild(title_header);
+            // create and populate title text
+            let title_header = document.createElement("h3");
+            title_header.appendChild(document.createTextNode(items[i].name));
 
-              item_container.appendChild(item_title);
+            // add title text to title div
+            item_title.appendChild(title_header);
 
-              let item_panes = document.createElement('div');
-              item_panes.setAttribute("class", "item-panes");
+            // add title div to item container
+            item_container.appendChild(item_title);
 
-                let image_div = document.createElement('div');
-                image_div.setAttribute("class", "item-div image");
+            // create item panes div for item data to show in
+            let item_panes = document.createElement('div');
+            item_panes.setAttribute("class", "item-panes");
 
-                  let image = document.createElement('img');
-                  image.setAttribute("src", items[i].url);
-                  image_div.appendChild(image);
+            // create div for item image
+            let image_div = document.createElement('div');
+            image_div.setAttribute("class", "item-div image");
 
-                item_panes.appendChild(image_div);
+            // create image object
+            let image = document.createElement('img');
+            image.setAttribute("src", items[i].url);
 
-                let price_div = document.createElement('div');
-                price_div.setAttribute("class", "item-div price");
-                  price_div.appendChild(document.createTextNode("$" + items[i].price));
+            // add image object to image div
+            image_div.appendChild(image);
 
-                item_panes.appendChild(price_div);
+            // add image div to item panes
+            item_panes.appendChild(image_div);
 
-                let quantity_div = document.createElement('div');
-                quantity_div.setAttribute("class", "item-div quantity");
+            // create div for price text
+            let price_div = document.createElement('div');
+            price_div.setAttribute("class", "item-div price");
 
-                  let q_group = document.createElement('div');
-                  q_group.setAttribute("class", "input-group")
+            // create and populate price text
+            price_div.appendChild(document.createTextNode("$" + items[i].price));
 
-                    let q_text = document.createElement('span');
-                    q_text.setAttribute("class", "input-group-text");
+            // add price div to item panes
+            item_panes.appendChild(price_div);
 
-                      q_text.appendChild(document.createTextNode("Quantity"));
+            // create div for quantity selector
+            let quantity_div = document.createElement('div');
+            quantity_div.setAttribute("class", "item-div quantity");
 
-                    q_group.appendChild(q_text);
+            // create input group
+            let q_group = document.createElement('div');
+            q_group.setAttribute("class", "input-group")
 
-                    let q_input = document.createElement('input');
-                    q_input.setAttribute("type", "number");
-                    q_input.setAttribute("class", "form-control");
-                    q_input.setAttribute("value", 0);
+            // create div for "quantity" text
+            let q_prepend = document.createElement('div');
+            q_prepend.setAttribute("class", "input-group-prepend");
 
-                    q_group.appendChild(q_input);
+            // create and populate "quantity" text
+            let q_text = document.createElement('span');
+            q_text.setAttribute("class", "input-group-text");
+            q_text.appendChild(document.createTextNode("Quantity"));
 
-                  quantity_div.appendChild(q_group);
+            // add "quantity" text to div
+            q_prepend.appendChild(q_text)
 
-                item_panes.appendChild(quantity_div);
+            // add text div to input group
+            q_group.appendChild(q_prepend);
 
-              item_container.appendChild(item_panes)
+            // create input field for quantity
+            let q_input = document.createElement('input');
+            q_input.setAttribute("type", "number");
+            q_input.setAttribute("class", "form-control");
+            q_input.setAttribute("value", 0);
 
+            // add input field to overall input group
+            q_group.appendChild(q_input);
+
+            // add input group to overall quantity div
+            quantity_div.appendChild(q_group);
+
+            // add quantity div to item panes
+            item_panes.appendChild(quantity_div);
+
+            // add item panes to overall item container
+            item_container.appendChild(item_panes)
+
+            // add item container to page
             items_area.appendChild(item_container);
           }
 
