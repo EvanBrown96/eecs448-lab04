@@ -35,9 +35,14 @@
     <script>
 
       //get quiz questions from backend
-      $.when($.ajax("./quiz-check.php", method="POST")).done(
+      $.when(
+        $.ajax({url: "./quiz-check.php",
+                method: "POST",
+                headers: {'quiz-mode': "GET_ANSWERS"}}
+        )
+      ).done(
         (questions_string) => {
-          
+
           let questions = JSON.parse(questions_string);
 
           // get dom form element
