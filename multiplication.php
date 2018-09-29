@@ -10,6 +10,16 @@
 
   echo("</tr>");
 
+  for($i = 1; $i < 101; $i++){
+    echo("<tr><td style='background-color: red; color: white;'>" . $i . "</td>");
+
+    for($j = 1; $j < 101; $j++){
+      echo("<td>" . $i * $j . "</td>");
+    }
+
+    echo("</tr>");
+  }
+
   echo("</table>")
 
 ?>
