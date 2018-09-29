@@ -20,6 +20,15 @@
     <form action="./quiz-check.php" method="post">
 
       <div class="questions" id="questions_div"></div>
+
+      <div class="container alert alert-warning" role="alert" id="loading-alert">
+        Loading Questions...
+      </div>
+      <div class="container alert alert-danger collapse" role="alert" id="error-alert">
+        An error occured while loading questions - please reload & try again.
+      </div>
+
+      </div>
       <div class="container quiz-section">
         <button type="submit" class="btn btn-primary">Submit Answers</button>
       </div>
@@ -104,6 +113,18 @@
             // add this question div to the whole form
             questions_div.appendChild(question_div);
           }
+
+          // hide "loading" alert
+          $("#loading-alert").hide();
+        }
+
+      ).fail(
+        (jqXHR, textStatus, information) => {
+          console.log("An error occured: " + information);
+          // hide "loading" alert
+          $("#loading-alert").hide();
+          // show "error" alert
+          $("#error-alert").show();
         }
       );
 
