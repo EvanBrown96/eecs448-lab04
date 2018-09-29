@@ -17,64 +17,64 @@
       <h1><u>Very Hard Quiz</u><h1>
     </div>
 
-    <form>
-
-      <div class="container quiz-section">
-
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="q1-1" name="q1" value="1">
-          <label class="form-check-label" for="q1-1">Op1</label>
-        </div>
-
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="q1-1" name="q1" value="1">
-          <label class="form-check-label" for="q1-2">Op2</label>
-        </div>
-
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="q1-1" name="q1" value="1">
-          <label class="form-check-label" for="q1-3">Op3</label>
-        </div>
-
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="q1-1" name="q1" value="1">
-          <label class="form-check-label" for="q1-4">Op4</label>
-        </div>
-
-      </div>
-
-
-
-      <div class="container quiz-section">
-
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="q1-1" name="q1" value="1">
-          <label class="form-check-label" for="q2-1">Op1</label>
-        </div>
-
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="q1-1" name="q1" value="1">
-          <label class="form-check-label" for="q2-2">Op2</label>
-        </div>
-
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="q1-1" name="q1" value="1">
-          <label class="form-check-label" for="q2-3">Op3</label>
-        </div>
-
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="q1-1" name="q1" value="1">
-          <label class="form-check-label" for="q2-4">Op4</label>
-        </div>
-
-      </div>
-
-    </form>
+    <form id="quiz-form"></form>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script>
+
+      let questions = [{question: "What is 2 + 2?", answers: [1, 10, 4, -70], correct: 2}];
+      let form_elem = document.getElementById("quiz-form");
+
+      for(let i = 0; i < questions.length; i++){
+        let question_div = document.createElement("div");
+        question_div.setAttribute("class", "container quiz-section");
+
+        let question_text = document.createElement("h5")
+        question_text.appendChild(document.createTextNode(questions[i].question));
+
+        question_div.appendChild(question_text);
+
+        for(let j = 0; j < questions[i].answers.length; j++){
+          let answer_div = document.createElement("div");
+          answer_div.setAttribute("class", "form-check");
+
+          let answer_id = "q"+i+"-"+j;
+
+          let answer_radio = document.createElement("input");
+          answer_radio.setAttribute("class", "form-check-input");
+          answer_radio.setAttribute("type", "radio");
+          answer_radio.setAttribute("name", "q"+i);
+          answer_radio.setAttribute("value", i);
+          answer_radio.setAttribute("id", answer_id);
+
+          answer_div.appendChild(answer_radio);
+
+          let answer_label = document.createElement("label");
+          answer_label.setAttribute("class", "form-check-label");
+          answer_label.setAttribute("for", answer_id);
+          answer_label.appendChild(document.createTextNode(questions[i].answers[j]));
+
+          answer_div.appendChild(answer_label);
+
+          question_div.appendChild(answer_div);
+        }
+
+        form_elem.appendChild(question_div);
+      }
+      // let q = document.createElement("div");
+      // q.setAttribute("class", "container quiz-section");
+      // let r = document.createElement("p");
+      // let mm = document.createTextNode("h1");
+      // r.appendChild(mm);
+      // q.appendChild(r);
+      // document.body.appendChild(q);
+
+    </script>
+
   </body>
 </html>
