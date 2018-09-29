@@ -19,6 +19,8 @@
 
   }
   else{
+
+    $score = 0;
     // display score
     for($i = 0; $i < count($answers); $i++){
       $user = $questions[$i]['answers'][$_POST['q' . $i]];
@@ -27,7 +29,13 @@
       echo "</p><p>You answered: " . $user;
       echo "</p><p>Correct answer: " . $correct;
       echo "</p><br>";
+
+      if($user == $correct){
+        $score++;
+      }
     }
+
+    echo "Your score is: " . (100*($score / count($answers))) . "%";
 
   }
 
