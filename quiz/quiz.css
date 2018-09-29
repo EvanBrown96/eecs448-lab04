@@ -1,0 +1,15 @@
+.quiz-section {
+  border: 2px solid gray;
+  padding: 1vw;
+  border-radius: 1vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+
+.quiz-section.top {
+  margin-top: 0vw;
+}
+
+.quiz-section.bottom {
+  margin-bottom: 0vw;
+}
