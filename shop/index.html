@@ -19,29 +19,14 @@
       </div>
     </div>
 
-    <div id="items-area">
-      <div class="container item">
-        <div class="item-div title">
-          <h3>Mozart Realistic Head</h3>
-        </div>
-        <div class="item-panes">
-          <div class="item-div image">
-            <img src="../../eecs448/amadeus.jpg">
-          </div>
-          <div class="item-div price">
-            <p>$27.99</p>
-          </div>
-          <div class="item-div quantity">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Quantity</span>
-              </div>
-              <input type="number" class="form-control" value=0>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="container alert alert-warning" role="alert" id="loading-alert">
+      Loading Item List...
     </div>
+    <div class="container alert alert-danger collapse" role="alert" id="error-alert">
+      An error occured while loading items - please reload & try again.
+    </div>
+
+    <div id="items-area"></div>
 
 
     <!-- Optional JavaScript -->
@@ -157,11 +142,21 @@
 
             // add item container to page
             items_area.appendChild(item_container);
+
           }
 
+          // hide "loading" alert
+          $("#loading-alert").hide();
         }
-      ).fail(
 
+      ).fail(
+        (jqXHR, textStatus, information) => {
+          console.log("An error occured: " + information);
+          // hide "loading" alert
+          $("#loading-alert").hide();
+          // show "error" alert
+          $("#error-alert").show();
+        }
       );
 
     </script>
