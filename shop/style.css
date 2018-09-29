@@ -1,8 +1,15 @@
 .item {
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  border: 1px solid black;
+  border-radius: 1vw;
+  padding: 0;
+}
+
+.item-panes {
   display: flex;
   flex-direction: row;
-  margin-top: 1vw;
-  margin-bottom: 1vw;
+  height: 20vh;
 }
 
 .item-div {
@@ -10,14 +17,18 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  border: 1px solid lightgray;
+  border: 1px solid #EDEDED;
   padding: 1vw;
-  border-radius: 1vw;
-  height: 20vh;
+}
+
+.item-div.title {
+  border-top-right-radius: 1vw;
+  border-top-left-radius: 1vw;
 }
 
 .item-div.image {
   width: 50%;
+  border-bottom-left-radius: 1vw;
 }
 
 .item-div.price {
@@ -27,6 +38,7 @@
 
 .item-div.quantity {
   width: 25%;
+  border-bottom-right-radius: 1vw;
 }
 
 img {

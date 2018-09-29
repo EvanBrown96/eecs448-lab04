@@ -21,18 +21,23 @@
 
     <div id="items-area">
       <div class="container item">
-        <div class="item-div image">
-          <img src="../../eecs448/piano.jpg">
+        <div class="item-div title">
+          <h3>Mozart Realistic Head</h3>
         </div>
-        <div class="item-div price">
-          <p>$27.99</p>
-        </div>
-        <div class="item-div quantity">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Quantity</span>
+        <div class="item-panes">
+          <div class="item-div image">
+            <img src="../../eecs448/amadeus.jpg">
+          </div>
+          <div class="item-div price">
+            <p>$27.99</p>
+          </div>
+          <div class="item-div quantity">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Quantity</span>
+              </div>
+              <input type="number" class="form-control" value=0>
             </div>
-            <input type="number" class="form-control" value=0>
           </div>
         </div>
       </div>
@@ -45,5 +50,88 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="./formChecker.js"></script>
+    <script>
+
+      let items;
+
+      $.when(
+        $.ajax({url: './customerBackend.php',
+                method: 'POST',
+                headers: {"shop-mode": "GET_ITEMS"}}
+        )
+      ).done(
+        (items_string) => {
+
+          items = JSON.parse(items_string);
+
+          let items_area = document.getElementById('items-area');
+
+          for(let i = 0; i < items.length; i++){
+
+            let item_container = document.createElement('div');
+            item_container.setAttribute("class", "container item");
+
+              let item_title = document.createElement('div');
+              item_title.setAttribute("class", "item-div title");
+
+                let title_header = document.createElement("h3");
+                title_header.appendChild(document.createTextNode(items[i].name));
+                item_title.appendChild(title_header);
+
+              item_container.appendChild(item_title);
+
+              let item_panes = document.createElement('div');
+              item_panes.setAttribute("class", "item-panes");
+
+                let image_div = document.createElement('div');
+                image_div.setAttribute("class", "item-div image");
+
+                  let image = document.createElement('img');
+                  image.setAttribute("src", items[i].url);
+                  image_div.appendChild(image);
+
+                item_panes.appendChild(image_div);
+
+                let price_div = document.createElement('div');
+                price_div.setAttribute("class", "item-div price");
+                  price_div.appendChild(document.createTextNode("$" + items[i].price));
+
+                item_panes.appendChild(price_div);
+
+                let quantity_div = document.createElement('div');
+                quantity_div.setAttribute("class", "item-div quantity");
+
+                  let q_group = document.createElement('div');
+                  q_group.setAttribute("class", "input-group")
+
+                    let q_text = document.createElement('span');
+                    q_text.setAttribute("class", "input-group-text");
+
+                      q_text.appendChild(document.createTextNode("Quantity"));
+
+                    q_group.appendChild(q_text);
+
+                    let q_input = document.createElement('input');
+                    q_input.setAttribute("type", "number");
+                    q_input.setAttribute("class", "form-control");
+                    q_input.setAttribute("value", 0);
+
+                    q_group.appendChild(q_input);
+
+                  quantity_div.appendChild(q_group);
+
+                item_panes.appendChild(quantity_div);
+
+              item_container.appendChild(item_panes)
+
+            items_area.appendChild(item_container);
+          }
+
+        }
+      ).fail(
+
+      );
+
+    </script>
   </body>
 </html>
