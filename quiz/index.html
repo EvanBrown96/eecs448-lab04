@@ -17,7 +17,14 @@
       <h1><u>Very Hard Quiz</u><h1>
     </div>
 
-    <form id="quiz-form"></form>
+    <form>
+
+      <div class="questions" id="questions_div"></div>
+      <div class="container quiz-section">
+        <button type="submit" class="btn btn-primary">Submit Answers</button>
+      </div>
+
+    </form>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -33,7 +40,10 @@
       let questions = [{question: "What is 2 + 2?", answers: [1, 10, 4, -70], correct: 2}];
 
       // get dom form element
-      let form_elem = document.getElementById("quiz-form");
+      let questions_div = document.getElementById("questions_div");
+
+      // get dom button div element
+      let button_div = document.getElementById("button_div");
 
       // go through each question in the array
       for(let i = 0; i < questions.length; i++){
@@ -86,7 +96,7 @@
         }
 
         // add this question div to the whole form
-        form_elem.appendChild(question_div);
+        questions_div.appendChild(question_div);
       }
 
     </script>
