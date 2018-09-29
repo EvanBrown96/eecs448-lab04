@@ -45,7 +45,7 @@
     }
 
     echo "Correct Answers: " . $score . "/" . count($answers);
-    echo "Your score is: " . (100*($score / count($answers))) . "%";
+    echo "<br>Your score is: " . (100*($score / count($answers))) . "%";
 
   }
 
