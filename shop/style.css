@@ -1,0 +1,38 @@
+.item {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+
+.item-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid lightgray;
+  padding: 1vw;
+  border-radius: 1vw;
+  height: 20vh;
+}
+
+.item-div.image {
+  width: 50%;
+}
+
+.item-div.price {
+  width: 25%;
+  font-size: 3vw;
+}
+
+.item-div.quantity {
+  width: 25%;
+}
+
+img {
+  object-fit: contain;
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
