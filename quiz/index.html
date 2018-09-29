@@ -27,24 +27,41 @@
 
     <script>
 
+      // array of question object in the format {question: "question text",
+      //                                         answers: [answer1, answer2...],
+      //                                         correct: index of correct answer}
       let questions = [{question: "What is 2 + 2?", answers: [1, 10, 4, -70], correct: 2}];
+
+      // get dom form element
       let form_elem = document.getElementById("quiz-form");
 
+      // go through each question in the array
       for(let i = 0; i < questions.length; i++){
+
+        // create div to contain question
         let question_div = document.createElement("div");
+        // set class of question div
         question_div.setAttribute("class", "container quiz-section");
 
+        // create header dom element for question text
         let question_text = document.createElement("h5")
+        // add text
         question_text.appendChild(document.createTextNode(questions[i].question));
 
+        // add question text element to the question div
         question_div.appendChild(question_text);
 
+        // go through each answer to this question
         for(let j = 0; j < questions[i].answers.length; j++){
+
+          // create div element for this answer
           let answer_div = document.createElement("div");
+          // set answer div class
           answer_div.setAttribute("class", "form-check");
 
           let answer_id = "q"+i+"-"+j;
 
+          // create radio button for this answer and set attributes
           let answer_radio = document.createElement("input");
           answer_radio.setAttribute("class", "form-check-input");
           answer_radio.setAttribute("type", "radio");
@@ -52,27 +69,25 @@
           answer_radio.setAttribute("value", i);
           answer_radio.setAttribute("id", answer_id);
 
+          // add this radio button to the answer div
           answer_div.appendChild(answer_radio);
 
+          // create label for this answer and set attributes
           let answer_label = document.createElement("label");
           answer_label.setAttribute("class", "form-check-label");
           answer_label.setAttribute("for", answer_id);
           answer_label.appendChild(document.createTextNode(questions[i].answers[j]));
 
+          // add answer lavel to the answer div
           answer_div.appendChild(answer_label);
 
+          // add this answer div to the overall question div
           question_div.appendChild(answer_div);
         }
 
+        // add this question div to the whole form
         form_elem.appendChild(question_div);
       }
-      // let q = document.createElement("div");
-      // q.setAttribute("class", "container quiz-section");
-      // let r = document.createElement("p");
-      // let mm = document.createTextNode("h1");
-      // r.appendChild(mm);
-      // q.appendChild(r);
-      // document.body.appendChild(q);
 
     </script>
 
