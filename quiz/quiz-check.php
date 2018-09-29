@@ -9,13 +9,13 @@
     array('question' => "How much wood could a woodchuck chuck if a woodchuck could chuck wood?",
           'answers' => array("Not Enough", "Just Right", "Too much", "700 pounds")),
 
-    array('questions' => "Who wrote the 'Jupiter' symphony?",
+    array('question' => "Who wrote the 'Jupiter' symphony?",
           'answers' => array("Holst", "Mozart", "Steely Dan", "Bach")),
 
-    array('questions' => "Which of these is NOT an existing minor league baseball team?",
+    array('question' => "Which of these is NOT an existing minor league baseball team?",
           'answers' => array("Chihuahuas", "Dust Devils", "Lake Monsters", "Swordfish")),
 
-    array('questions' => "Who hit two 3-pointers in the last 2 minutes of the 2016 national championship?",
+    array('question' => "Who hit two 3-pointers in the last 2 minutes of the 2016 national championship?",
           'answers' => array("Marcus Paige", "Josh Hart", "Kris Jenkins", "Brice Johnson"))
   );
 
