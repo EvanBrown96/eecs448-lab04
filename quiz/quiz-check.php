@@ -20,12 +20,15 @@
   }
   else{
     // display score
-    echo "poop";
+    for($i = 0; $i < count($answers); $i++){
+      $user = $questions[$i]['answers'][$_POST['q' . $i]];
+      $correct = $questions[$i]['answers'][$answers[$i]];
+      echo "<p>Question " . ($i+1) . ": " . $questions[$i]['question'];
+      echo "</p><p>You answered: " . $user;
+      echo "</p><p>Correct answer: " . $correct;
+      echo "</p><br>";
+    }
 
   }
-
-  // foreach($_POST as $val){
-  //   echo $val;
-  // }
 
 ?>
