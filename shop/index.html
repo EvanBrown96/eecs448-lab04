@@ -18,16 +18,19 @@
         <h1>Welcome to Armorzon!</h1>
       </div>
     </div>
-
     <div class="container alert alert-warning" role="alert" id="loading-alert">
       Loading Item List...
     </div>
-    <div class="container alert alert-danger collapse" role="alert" id="error-alert">
-      An error occured while loading items - please reload & try again.
-    </div>
+      <div class="container alert alert-danger collapse" role="alert" id="error-alert">
+        An error occured while loading items - please reload & try again.
+      </div>
 
-    <div id="items-area"></div>
-
+    <form action="./customerBackend.php" method="post">
+      <div id="items-area"></div>
+      <div class="container" id="submit-div">
+        <button type="submit" class="btn btn-primary">Checkout</button>
+      </div>
+    </form>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -126,6 +129,7 @@
             let q_input = document.createElement('input');
             q_input.setAttribute("type", "number");
             q_input.setAttribute("class", "form-control");
+            q_input.setAttribute("name", "item_"+i)
             q_input.setAttribute("value", 0);
 
             // add input field to overall input group

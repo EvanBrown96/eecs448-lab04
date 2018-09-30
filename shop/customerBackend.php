@@ -32,6 +32,13 @@
           "price" => 1000),
   );
 
-  echo json_encode($items);
+  if($_SERVER["HTTP_SHOP_MODE"] == "GET_ITEMS"){
+    echo json_encode($items);
+  }
+  else{
+    foreach($_POST as $key => $value){
+      echo $key . " x " . $value . "<br>";
+    }
+  }
 
  ?>

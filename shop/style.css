@@ -48,3 +48,15 @@ img {
   width: auto;
   height: auto;
 }
+
+#submit-div {
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  border: 1px solid black;
+  border-radius: 1vw;
+  padding: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
