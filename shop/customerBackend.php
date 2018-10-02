@@ -45,14 +45,18 @@
     echo "<p>Username: " . $_POST['username'] . "</p>";
     echo "<p>Password: " . $_POST['password'] . "</p>";
 
+    $total = $shipping[$_POST['shipping']];
+
     echo "<table><tr><td></td><td>Quantity</td><td>Cost Per Item</td><td>Subtotal</td></tr>";
     foreach($_POST as $key => $value){
       if(substr($key, 0, 4) == "item" && $value > 0){
         $index = (int)substr($key, 5, 1);
         echo "<tr><td>" . $items[$index]["name"] . "</td><td>" . $value . "</td><td>$" . $items[$index]["price"] . "</td><td>$" . $value * $items[$index]["price"] . "</td></tr>";
+        $total += $value * $items[$index]["price"];
       }
     }
-    echo("</table>");
+    echo("<tr><td>Shipping</td><td colspan='2'>" . $_POST['shipping'] . "</td><td>$" . $shipping[$_POST['shipping']] . "</td></tr>");
+    echo("<tr><td colspan='3'>Total Cost</td><td>$" . $total . "</td></tr></table>");
   }
 
  ?>
