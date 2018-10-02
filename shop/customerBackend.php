@@ -40,11 +40,17 @@
     echo json_encode($items);
   }
   else{
+
+    echo "<h5>Thank you for your purchase.</h5>";
+    echo "<p>Username: " . $_POST['username'] . "</p>";
+    echo "<p>Password: " . $_POST['password'] . "</p>";
+
+    echo "<table><tr><td></td><td>Quantity</td><td>Cost Per Item</td><td>Subtotal</td></tr>";
     foreach($_POST as $key => $value){
-      echo $key . " x " . $value . "<br>";
+      $index = (int)substr($key, 5, 1)
+      echo "<tr><td>" . $value . "</td><td>" . $items[$index]["name"] . "</td><td>$" . $items[$index]["price"] . "</td><td>$" . $value * $items[$index]["price"] . "</td></tr>";
     }
-    echo $_POST['username'];
-    echo $_POST['password'];
+    echo("</table>")
   }
 
  ?>
