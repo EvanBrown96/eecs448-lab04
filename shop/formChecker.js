@@ -1,7 +1,8 @@
 function promptAuthentication(){
 
   let fail = false;
-  let msg;
+  let has_item = false;
+  let msg = "No items were selected!";
 
   for(let i = 0; i < items.length; i++){
     let item_elem = document.getElementById("item_"+i);
@@ -17,9 +18,12 @@ function promptAuthentication(){
       msg = "Quantities cannot be negative!";
       break;
     }
+    if(Number(item_val) > 0){
+      has_item = true;
+    }
   }
 
-  if(fail){
+  if(fail || !has_item){
     showError(msg);
   }
   else{
