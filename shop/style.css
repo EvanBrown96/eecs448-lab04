@@ -60,3 +60,32 @@ img {
   justify-content: center;
   text-align: center;
 }
+
+#receipt {
+  border: 1px solid black;
+}
+
+#receipt th{
+  border: 1px solid gray;
+  background-color: lightgreen;
+}
+
+#receipt td {
+  border: 1px solid gray;
+  background-color: lightblue;
+  text-align: right;
+}
+
+#receipt .header {
+  background-color: lightgreen;
+  text-align: left;
+}
+
+#receipt .shipping td {
+  background-color: lightgreen;
+}
+
+#receipt .total td {
+  background-color: lightgreen;
+  font-weight: bold;
+}
