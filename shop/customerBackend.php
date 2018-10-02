@@ -32,6 +32,10 @@
           "price" => 1000),
   );
 
+  $shipping = array("7-day" => 0,
+                    "3-day" => 5,
+                    "overnight" => 50);
+
   if($_SERVER["HTTP_SHOP_MODE"] == "GET_ITEMS"){
     echo json_encode($items);
   }
@@ -39,6 +43,8 @@
     foreach($_POST as $key => $value){
       echo $key . " x " . $value . "<br>";
     }
+    echo $_POST['username'];
+    echo $_POST['password'];
   }
 
  ?>

@@ -30,6 +30,8 @@
       <div id="items-area"></div>
       <div class="container" id="submit-div">
         <button type="button" class="btn btn-primary" onclick="promptAuthentication();">Checkout</button>
+        <hr>
+        <button type="button" class="btn btn-danger" onclick="resetCart();">Reset Cart</button>
       </div>
 
       <div class="modal fade bg-success" tabindex="-1" role="dialog" id="authentication">
@@ -42,9 +44,26 @@
 
             <div class="modal-body">
               <label for="username" class="sr-only">Username</label>
-              <input type="text" class="form-control" id="username" placeholder="Enter Username">
+              <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username">
               <label for="password" class="sr-only">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Enter Password">
+              <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password">
+
+              <hr>
+
+              <p>Choose Shipping Method:</p>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="shipping" id="7-day" value="7-day">
+                <label for="7-day" class="form-check-label">7-day (FREE!)</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="shipping" id="3-day" value="3-day">
+                <label for="3-day" class="form-check-label">3-day ($5.00)</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="shipping" id="overnight" value="overnight">
+                <label for="overnight" class="form-check-label">Overnight ($50.00)</label>
+              </div>
             </div>
 
             <div class="modal-footer">
@@ -83,7 +102,13 @@
     <script src="./itemGeneration.js"></script>
     <script>
 
+      function resetCart(){
 
+        for(let i = 0; i < items.length; i++){
+          document.getElementById("item_"+i).value = 0;
+        }
+
+      }
 
     </script>
   </body>

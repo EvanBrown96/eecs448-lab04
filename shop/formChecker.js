@@ -43,6 +43,9 @@ let email_regex = new RegExp(".*@.*") // just checks for [string]@[string]
 function checkUserPass(){
   let username = document.getElementById('username').value;
   let password = document.getElementById('password').value;
+  let shipping = Boolean(document.getElementById('7-day').checked)
+              || Boolean(document.getElementById('3-day').checked)
+              || Boolean(document.getElementById('overnight').checked);
 
   if(!email_regex.test(username)){
     showError("Username must be an email address!");
@@ -51,6 +54,11 @@ function checkUserPass(){
 
   if(password.length == 0){
     showError("Password field cannot be blank!");
+    return false;
+  }
+
+  if(!shipping){
+    showError("Shipping method must be selected!");
     return false;
   }
 
