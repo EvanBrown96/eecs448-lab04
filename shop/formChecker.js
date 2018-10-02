@@ -27,7 +27,32 @@ function promptAuthentication(){
   }
 }
 
+
+
 function showError(msg){
   document.getElementById('error_msg').innerHTML = msg;
   $('#error-modal').modal('show');
+}
+
+
+
+let email_regex = new RegExp(".*@.*") // just checks for [string]@[string]
+
+
+
+function checkUserPass(){
+  let username = document.getElementById('username').value;
+  let password = document.getElementById('password').value;
+
+  if(!email_regex.test(username)){
+    showError("Username must be an email address!");
+    return false;
+  }
+
+  if(password.length == 0){
+    showError("Password field cannot be blank!");
+    return false;
+  }
+
+  return true;
 }

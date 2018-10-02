@@ -25,7 +25,7 @@
         An error occured while loading items - please reload & try again.
       </div>
 
-    <form action="./customerBackend.php" method="post">
+    <form action="./customerBackend.php" method="post" onsubmit="return checkUserPass();">
 
       <div id="items-area"></div>
       <div class="container" id="submit-div">
@@ -37,11 +37,14 @@
           <div class="modal-content">
 
             <div class="modal-header">
-              <h3 class="modal-title">Enter Username and Password</h3>
+              <h3 class="modal-title">Enter Authentication Details</h3>
             </div>
 
             <div class="modal-body">
-              <p>poop</p>
+              <label for="username" class="sr-only">Username</label>
+              <input type="text" class="form-control" id="username" placeholder="Enter Username">
+              <label for="password" class="sr-only">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter Password">
             </div>
 
             <div class="modal-footer">
@@ -62,10 +65,6 @@
           <div class="modal-header">
             <h3 class="modal-title" id="error_msg">Error Message Here</h3>
           </div>
-
-          <!--<div class="modal-body">
-            <p>poop</p>
-          </div>-->
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
